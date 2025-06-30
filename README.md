@@ -96,7 +96,7 @@ The application will open in your browser at `http://localhost:8501`.
 
 ## 📊 Application Features
 
-### 5-Tab Interface (As Specified in Requirements)
+### 5-Tab Interface
 
 #### 1. **🏠 Overview**
 - Project description and objectives
