@@ -5,8 +5,18 @@ from sklearn.decomposition import PCA
 
 def load_column_names():
     """Load column names from dictionary.txt"""
-    with open("data/dictionary.txt", 'r') as f:
-        lines = f.readlines()
+    # Try different encodings to handle special characters
+    encodings = ['utf-8', 'latin-1', 'cp1252', 'iso-8859-1']
+    
+    for encoding in encodings:
+        try:
+            with open("data/dictionary.txt", 'r', encoding=encoding) as f:
+                lines = f.readlines()
+            break
+        except UnicodeDecodeError:
+            continue
+    else:
+        raise ValueError("Could not decode dictionary.txt with any supported encoding")
     
     column_names = []
     for line in lines:
@@ -40,16 +50,25 @@ def load_data():
     # Load column names from dictionary
     column_names = load_column_names()
     
-    # Load training data
-    train_df = pd.read_csv("data/ticdata2000.txt", sep='\t', header=None)
+    # Load training data with encoding handling
+    try:
+        train_df = pd.read_csv("data/ticdata2000.txt", sep='\t', header=None, encoding='utf-8')
+    except UnicodeDecodeError:
+        train_df = pd.read_csv("data/ticdata2000.txt", sep='\t', header=None, encoding='latin-1')
     train_df.columns = column_names
     
-    # Load test data
-    test_df = pd.read_csv("data/ticeval2000.txt", sep='\t', header=None)
+    # Load test data with encoding handling
+    try:
+        test_df = pd.read_csv("data/ticeval2000.txt", sep='\t', header=None, encoding='utf-8')
+    except UnicodeDecodeError:
+        test_df = pd.read_csv("data/ticeval2000.txt", sep='\t', header=None, encoding='latin-1')
     test_df.columns = column_names[:-1]  # test set doesn't have the target
     
-    # Load test targets
-    test_targets = pd.read_csv("data/tictgts2000.txt", header=None).squeeze()
+    # Load test targets with encoding handling
+    try:
+        test_targets = pd.read_csv("data/tictgts2000.txt", header=None, encoding='utf-8').squeeze()
+    except UnicodeDecodeError:
+        test_targets = pd.read_csv("data/tictgts2000.txt", header=None, encoding='latin-1').squeeze()
     test_df["CARAVAN"] = test_targets
     
     return train_df, test_df
