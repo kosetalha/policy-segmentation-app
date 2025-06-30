@@ -2,6 +2,8 @@
 
 This project uses real-world insurance customer data to build a customer segmentation model and analyze product ownership patterns. The goal is to provide insights that can help insurance companies personalize their marketing strategies and improve customer understanding.
 
+<a href="https://policy-segmentation-app.streamlit.app/" target="_blank">Streamlit App</a>
+
 ---
 
 ## 🎯 Objectives
