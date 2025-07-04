@@ -2,7 +2,7 @@
 
 This project uses real-world insurance customer data to build a customer segmentation model and analyze product ownership patterns. The goal is to provide insights that can help insurance companies personalize their marketing strategies and improve customer understanding.
 
-<a href="https://policy-segmentation-app.streamlit.app/" target="_blank">Streamlit App</a>
+[Streamlit App](https://policy-segmentation-app.streamlit.app/)
 
 ---
 
@@ -60,7 +60,7 @@ policy-segmentation-app/
 Clone the repository and navigate to the project directory:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/kosetalha/policy-segmentation-app.git
 cd policy-segmentation-app
 ```
 
@@ -228,6 +228,8 @@ The application analyzes 42 different insurance products:
 ## 📝 License and Usage
 
 This project is intended for educational and demonstration purposes only. Original dataset is provided by UCI Machine Learning Repository under their usage guidelines.
+
+Access the dataset here: [Insurance Company Benchmark (COIL 2000)](https://archive.ics.uci.edu/dataset/125/insurance+company+benchmark+coil+2000)
 
 ---
 
